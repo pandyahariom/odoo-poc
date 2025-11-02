@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="product_supplierinfo_product_a" model="product.supplierinfo">
+            <field name="product_tmpl_id" ref="product_product_a_product_template"/>
+            <field name="partner_id" ref="res_partner_abc_suppliers"/>
+            <field name="delay">2</field>
+            <field name="min_qty">0</field>
+            <field name="price">100</field>
+            <field name="currency_id" ref="base.USD"/>
+        </record>
+        <record id="product_supplierinfo_product_b" model="product.supplierinfo">
+            <field name="product_tmpl_id" ref="product_product_b_product_template"/>
+            <field name="partner_id" ref="res_partner_abc_suppliers"/>
+            <field name="delay">2</field>
+            <field name="min_qty">0</field>
+            <field name="price">100</field>
+            <field name="currency_id" ref="base.USD"/>
+        </record>
+        <record id="product_supplierinfo_product_c" model="product.supplierinfo">
+            <field name="product_tmpl_id" ref="product_product_c_product_template"/>
+            <field name="partner_id" ref="res_partner_abc_suppliers"/>
+            <field name="delay">2</field>
+            <field name="min_qty">0</field>
+            <field name="price">100</field>
+            <field name="currency_id" ref="base.USD"/>
+        </record>
+        
+        <record id="product_supplierinfo_product_d" model="product.supplierinfo">
+            <field name="product_tmpl_id" ref="product_tmpl_d"/>
+            <field name="partner_id" ref="res_partner_abc_suppliers"/>
+            <field name="delay">2</field>
+            <field name="min_qty">0</field>
+            <field name="price">100</field>
+            <field name="currency_id" ref="base.USD"/>
+        </record>
+
+        <record id="product_supplierinfo_product_e" model="product.supplierinfo">
+            <field name="product_tmpl_id" ref="product_product_e_product_template"/>
+            <field name="partner_id" ref="res_partner_def_suppliers"/>
+            <field name="delay">2</field>
+            <field name="min_qty">0</field>
+            <field name="price">100</field>
+            <field name="currency_id" ref="base.USD"/>
+        </record>
+    </data>
+</odoo>

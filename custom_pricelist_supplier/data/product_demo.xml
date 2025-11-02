@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="product_category_custom" model="product.category">
+            <field name="parent_id" ref="product.product_category_furniture"/>
+            <field name="name">Custom Furniture</field>
+        </record>
+
+        <record id="product_product_a" model="product.product">
+            <field name="name">Product A</field>
+            <field name="categ_id" ref="product_category_custom"/>
+            <field name="standard_price">550</field>
+            <field name="list_price">600</field>
+            <field name="type">consu</field>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="default_code">Product A</field>
+        </record>
+
+        <record id="product_product_b" model="product.product">
+            <field name="name">Product B</field>
+            <field name="categ_id" ref="product_category_custom"/>
+            <field name="standard_price">550</field>
+            <field name="list_price">600</field>
+            <field name="type">consu</field>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="default_code">Product B</field>
+        </record>
+
+        <!-- Product C is of different Category than A,B -->
+        <record id="product_product_c" model="product.product">
+            <field name="name">Product C</field>
+            <field name="categ_id" ref="product.product_category_furniture"/>
+            <field name="standard_price">550</field>
+            <field name="list_price">600</field>
+            <field name="type">consu</field>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="default_code">Product C</field>
+        </record>
+
+        <!-- Product D is of multiple variants -->
+        <record id="product_tmpl_d" model="product.template">
+            <field name="name">Product D</field>
+            <field name="categ_id" ref="product_category_custom"/>
+            <field name="standard_price">550</field>
+            <field name="list_price">600</field>
+            <field name="type">consu</field>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="default_code">Product D</field>
+        </record>
+
+        <record id="product_d_attribute_1_product_template_attribute_line" model="product.template.attribute.line">
+            <field name="product_tmpl_id" ref="product_tmpl_d"/>
+            <field name="attribute_id" ref="product.pa_legs"/>
+            <field
+                name="value_ids"
+                eval="[Command.set([
+                    ref('product.pav_legs_steel'),
+                    ref('product.pav_legs_aluminium'),
+                ])]"
+            />
+        </record>
+
+        <function model="ir.model.data" name="_update_xmlids">
+            <value model="base" eval="[{
+                'xml_id': 'custom_pricelist_supplier.product_d_attribute_1_value_1',
+                'record': obj().env.ref('custom_pricelist_supplier.product_d_attribute_1_product_template_attribute_line').product_template_value_ids[0],
+                'noupdate': True,
+            }, {
+                'xml_id': 'custom_pricelist_supplier.product_d_attribute_1_value_2',
+                'record': obj().env.ref('custom_pricelist_supplier.product_d_attribute_1_product_template_attribute_line').product_template_value_ids[1],
+                'noupdate': True,
+            }]"/>
+        </function>
+
+        <function model="ir.model.data" name="_update_xmlids">
+            <value model="base" eval="[{
+                'xml_id': 'custom_pricelist_supplier.product_product_d1',
+                'record': obj().env.ref('custom_pricelist_supplier.product_tmpl_d')._get_variant_for_combination(obj().env.ref('custom_pricelist_supplier.product_d_attribute_1_value_1')),
+                'noupdate': True,
+            }, {
+                'xml_id': 'custom_pricelist_supplier.product_product_d2',
+                'record': obj().env.ref('custom_pricelist_supplier.product_tmpl_d')._get_variant_for_combination(obj().env.ref('custom_pricelist_supplier.product_d_attribute_1_value_2')),
+                'noupdate': True,
+            },]"/>
+        </function>
+
+        <record id="product_product_d1" model="product.product">
+            <field name="default_code">Variant D1</field>
+            <field name="weight">0.01</field>
+        </record>
+        <record id="product_product_d2" model="product.product">
+            <field name="default_code">Variant D2</field>
+            <field name="weight">0.01</field>
+        </record>
+
+        <record id="product_product_e" model="product.product">
+            <field name="name">Product E</field>
+            <field name="categ_id" ref="product_category_custom"/>
+            <field name="standard_price">550</field>
+            <field name="list_price">600</field>
+            <field name="type">consu</field>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="default_code">Product E</field>
+        </record>
+
+    </data>
+</odoo>

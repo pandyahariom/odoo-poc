@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="res_partner_abc_suppliers" model="res.partner">
+            <field name="name">ABC Suppliers</field>
+            <field name="supplier_rank">1</field>
+        </record>
+
+        <record id="res_partner_def_suppliers" model="res.partner">
+            <field name="name">DEF Suppliers</field>
+            <field name="supplier_rank">7</field>
+        </record>
+
+        <record id="res_partner_ghi_suppliers" model="res.partner">
+            <field name="name">GHI Suppliers</field>
+            <field name="supplier_rank">10</field>
+        </record>
+
+        <record id="res_partner_customer_a" model="res.partner">
+            <field name="name">Customer A</field>
+        </record>
+    </data>
+</odoo>

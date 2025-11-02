@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="pricelist_customer_a" model="product.pricelist">
+            <field name="name">Customer A Price List</field>
+        </record>
+
+        <!-- Apply to all products of category Custom Furniture -->
+        <record id="customer_a_pricelist_item_4" model="product.pricelist.item">
+            <field name="pricelist_id" ref="pricelist_customer_a"/>
+            <field name="compute_price">fixed</field>
+            <field name="fixed_price">530</field>
+            <field name="categ_id" ref="product_category_custom"/>
+        </record>
+
+        <function model="product.pricelist.item" name="write">
+            <value eval="[ref('customer_a_pricelist_item_4')]"/>
+            <value eval="{'display_applied_on': '2_product_category'}"/>
+        </function>
+        
+        <!-- Apply to product A -->
+        <record id="customer_a_pricelist_item_1" model="product.pricelist.item">
+            <field name="pricelist_id" ref="pricelist_customer_a"/>
+            <field name="compute_price">fixed</field>
+            <field name="fixed_price">500</field>
+            <field name="product_id" ref="product_product_a"/>
+            <field name="apply_to_supplier" eval="True"/>
+            <field name="supplier_id" ref="res_partner_abc_suppliers"/>
+        </record>
+
+        <!-- Apply to template D (variant D1 and D2) -->
+        <record id="customer_a_pricelist_item_2" model="product.pricelist.item">
+            <field name="pricelist_id" ref="pricelist_customer_a"/>
+            <field name="compute_price">fixed</field>
+            <field name="fixed_price">510</field>
+            <field name="product_tmpl_id" ref="product_tmpl_d"/>
+            <field name="apply_to_supplier" eval="True"/>
+            <field name="supplier_id" ref="res_partner_abc_suppliers"/>
+        </record>
+
+        <!-- Apply to all products of category Custom Furniture -->
+        <record id="customer_a_pricelist_item_3" model="product.pricelist.item">
+            <field name="pricelist_id" ref="pricelist_customer_a"/>
+            <field name="compute_price">fixed</field>
+            <field name="fixed_price">520</field>
+            <field name="categ_id" ref="product_category_custom"/>
+            <field name="apply_to_supplier" eval="True"/>
+            <field name="supplier_id" ref="res_partner_abc_suppliers"/>
+        </record>
+
+        <function model="product.pricelist.item" name="write">
+            <value eval="[ref('customer_a_pricelist_item_3')]"/>
+            <value eval="{'display_applied_on': '2_product_category'}"/>
+        </function>
+
+    </data>
+</odoo>
